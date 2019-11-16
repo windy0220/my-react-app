@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Todo from './todoList';
 import './index.css';
 
 class Square extends React.Component {
@@ -83,3 +84,7 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
+ReactDOM.render(
+  <Todo />,
+  document.getElementById('todo')
+)
