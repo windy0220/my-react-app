@@ -17,6 +17,7 @@ class  extends Component {
  
 export default ;
 ```
+rcc 生成上面两个
 
 ## jsx一些坑
 `<label>` 中的for 要写 `htmlFor`
