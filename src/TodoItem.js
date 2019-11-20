@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class TodoItem extends Component {
     render() {
         return (
             <div onClick={this.delItem}>
-                {this.props.item}
+                {this.props.name + this.props.item}
             </div>
         );
     }
@@ -18,6 +19,18 @@ class TodoItem extends Component {
         console.log(this.props.index)
         this.props.del(this.props.index)
     }
+}
+
+// 父组件传值校验
+TodoItem.prototypes = {
+    name:PropTypes.string.isRequired,
+    item:PropTypes.string.isRequired,
+    index:PropTypes.number,
+    delItem:PropTypes.func
+}
+// 默认值
+TodoItem.defaultProps  = {
+    name:'windy'
 }
 
 export default TodoItem;

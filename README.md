@@ -81,3 +81,34 @@ delItem(index) {
     todo anything...
 }
 ```
+
+## 校验传递值 PropTypes
+子组件引入 PropTypes
+impt
+```javascript
+import PropTypes from 'prop-types';
+```
+
+类型校验
+```javascript
+TodoItem.prototypes = {
+    index:PropTypes.number,
+    delItem:PropTypes.func
+}
+```
+
+必传校验
+```javascript
+TodoItem.prototypes = {
+    name:PropTypes.string.isRequired,
+    item:PropTypes.string.isRequired
+}
+```
+
+默认值传递
+
+```javascript
+TodoItem.defaultProps  = {
+    name:'windy'
+}
+```
