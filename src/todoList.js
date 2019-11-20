@@ -13,7 +13,7 @@ class Todo extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://www.easy-mock.com/mock/5d621678d0f1b76f57836741')
+        axios.get('http://rap2api.taobao.org/app/mock/237360/example/1574265556809')
             .then((res) => { console.log('axios 获取数据成功:',res) })
             .catch((error) => { console.log('axios 获取数据失败',error) })
     }
