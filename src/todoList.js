@@ -10,18 +10,20 @@ class Todo extends React.Component {
             todoList: ['写禅道', '学习go']
         }
     }
+
     render() {
+        console.log('render---组件挂载中.......')
         return (
             <Fragment>
                 <label htmlFor="todoinput">添加待办</label>
                 <input className="input" id="todoinput" value={this.state.inputValue} onChange={this.changeSubButton.bind(this)} />
                 <button onClick={this.addList.bind(this)}>添加待办</button>
-                <ul ref={ul => {this.ul = ul}}>
+                <ul ref={ul => { this.ul = ul }}>
                     {
                         this.state.todoList.map((item, index) => {
                             return (
-                                <TodoItem 
-                                    key={item+index}
+                                <TodoItem
+                                    key={item + index}
                                     item={item}
                                     index={index}
                                     del={this.delItem.bind(this)}
@@ -42,7 +44,7 @@ class Todo extends React.Component {
         this.setState({
             todoList: [...this.state.todoList, this.state.inputValue],
             inputValue: ''
-        },()=>{
+        }, () => {
             // setState 是一个异步，这里可以加一个函数，用于setState执行结束后执行。
             console.log(this.ul.querySelectorAll('li').length)
         })

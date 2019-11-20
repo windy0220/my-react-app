@@ -7,6 +7,10 @@ class TodoItem extends Component {
         this.delItem = this.delItem.bind(this)
     }
 
+    shouldComponentUpdate(nextProps,nextState){
+        return nextProps.item !== this.props.item
+    }
+
     render() {
         return (
             <li onClick={this.delItem}>
@@ -23,14 +27,14 @@ class TodoItem extends Component {
 
 // 父组件传值校验
 TodoItem.prototypes = {
-    name:PropTypes.string.isRequired,
-    item:PropTypes.string.isRequired,
-    index:PropTypes.number,
-    delItem:PropTypes.func
+    name: PropTypes.string.isRequired,
+    item: PropTypes.string.isRequired,
+    index: PropTypes.number,
+    delItem: PropTypes.func
 }
 // 默认值
-TodoItem.defaultProps  = {
-    name:'windy'
+TodoItem.defaultProps = {
+    name: 'windy'
 }
 
 export default TodoItem;

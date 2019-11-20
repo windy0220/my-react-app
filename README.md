@@ -139,3 +139,53 @@ this.setState({
     console.log(this.ul.querySelectorAll('li').length)
 })
 ```
+
+## 生命周期
+
+组件挂载周期 Mounting
+```javascript
+//组件将要挂载到页面的时刻 改函数在v17要被移除
+UNSAFE_componentWillMount(){}
+
+//组件挂载中
+render(){}
+
+//组件挂载完成
+componentDidMount(){}
+
+```
+
+组件数据改变周期 Updation
+
+```javascript
+//只在子组件中起作用
+componentWillReceiveProps(){}
+
+
+//组件发生改变前执行 必须返回一个布尔值，若为false 则不执行之后的生命周期
+//nextProps:变化后的属性;
+//nextState:变化后的状态;
+// 可用于性能优化 但官方推荐 PureComponent
+shouldComponentUpdate(nextProps,nextState){
+    return nextProps.content !== this.props.content
+}
+
+//组件更新前，shouldComponentUpdate函数之后执行
+componentWillUpdate(){}
+
+//开始挂载渲染
+render(){}
+
+//组件更新之后执行
+componentDidUpdate(){}
+
+```
+
+组件被删除 Unmounting
+```javascript
+//组件被卸载前执行
+componentWillUnmount(){}
+```
+
+[组件的生命周期](https://zh-hans.reactjs.org/docs/react-component.html#the-component-lifecycle)
+
