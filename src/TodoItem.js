@@ -9,9 +9,9 @@ class TodoItem extends Component {
 
     render() {
         return (
-            <div onClick={this.delItem}>
+            <li onClick={this.delItem}>
                 {this.props.name + this.props.item}
-            </div>
+            </li>
         );
     }
 

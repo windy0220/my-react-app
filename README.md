@@ -112,3 +112,30 @@ TodoItem.defaultProps  = {
     name:'windy'
 }
 ```
+
+## ref
+
+jsx 中可以使用ref 赋值，方便函数中调用
+
+```html
+<ul ref={ul => {this.ul = ul}}>
+    <li></li>
+    <li></li>
+</ul>
+```
+
+```javascript
+console.log(this.ul.querySelectorAll('li').length)
+```
+
+## setState 异步执行的回调函数
+
+this.setState 是一个异步方法。可以传入一个回调函数
+
+```javascript
+this.setState({
+    inputValue: ''
+},()=>{
+    console.log(this.ul.querySelectorAll('li').length)
+})
+```
