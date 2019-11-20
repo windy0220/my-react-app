@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import TodoItem from './TodoItem'
+import axios from 'axios'
 import './style.css'
 
 class Todo extends React.Component {
@@ -9,6 +10,12 @@ class Todo extends React.Component {
             inputValue: '',
             todoList: ['写禅道', '学习go']
         }
+    }
+
+    componentDidMount() {
+        axios.get('http://www.easy-mock.com/mock/5d621678d0f1b76f57836741')
+            .then((res) => { console.log('axios 获取数据成功:',res) })
+            .catch((error) => { console.log('axios 获取数据失败',error) })
     }
 
     render() {

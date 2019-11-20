@@ -189,3 +189,18 @@ componentWillUnmount(){}
 
 [组件的生命周期](https://zh-hans.reactjs.org/docs/react-component.html#the-component-lifecycle)
 
+## Axios
+```javascript
+npm install -save axios
+```
+
+```javascript
+import axios from 'axios'
+
+// 这个生命周期函数只会挂载一次
+componentDidMount(){
+    axios.post('https://apiurl.com')
+        .then((res)=>{console.log('axios 获取数据成功:'+JSON.stringify(res))  })
+        .catch((error)=>{console.log('axios 获取数据失败'+error)})
+}
+```
