@@ -8,18 +8,28 @@ class Todo extends React.Component {
         super(props)
         this.state = {
             inputValue: '',
-            todoList: ['写禅道', '学习go']
+            todoList: []
         }
     }
 
     componentDidMount() {
-        axios.get('http://rap2api.taobao.org/app/mock/237360/example/1574265556809')
-            .then((res) => { console.log('axios 获取数据成功:',res) })
-            .catch((error) => { console.log('axios 获取数据失败',error) })
+        axios.get('http://rap2api.taobao.org/app/mock/237360/todolist', {
+            params: {
+                listId: 1
+            }
+        })
+            .then((res) => {
+                console.log('axios 获取数据成功:', res.data.listdata)
+                this.setState({
+
+                    todoList : res.data.listdata
+                }
+                )
+            })
+            .catch((error) => { console.log('axios 获取数据失败', error) })
     }
 
     render() {
-        console.log('render---组件挂载中.......')
         return (
             <Fragment>
                 <label htmlFor="todoinput">添加待办</label>
