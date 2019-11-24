@@ -1,6 +1,6 @@
-#### react 学习手记
+# react 学习手记
 
-## vs code 插件 Simple React Snippets
+#### vs code 插件 Simple React Snippets
 imrc
 ```
 import React, { Component } from 'react';
@@ -10,7 +10,7 @@ cc
 ```
 class  extends Component {
     state = {  }
-    render() { 
+    render() {   
         return (  );
     }
 }
@@ -19,7 +19,7 @@ export default ;
 ```
 rcc 生成上面两个
 
-## jsx一些坑
+#### jsx一些坑
 `<label>` 中的for 要写 `htmlFor`
 
 样式class 要写 `className`
@@ -37,7 +37,7 @@ rcc 生成上面两个
 有点类似 vue 中的 v-html
 ```
 
-## 父子组件传值
+#### 父子组件传值
 
 父组件通过自定义属性传值给子组件 
 
@@ -82,7 +82,7 @@ delItem(index) {
 }
 ```
 
-## 校验传递值 PropTypes
+#### 校验传递值 PropTypes
 子组件引入 PropTypes
 impt
 ```javascript
@@ -113,7 +113,7 @@ TodoItem.defaultProps  = {
 }
 ```
 
-## ref
+#### ref
 
 jsx 中可以使用ref 赋值，方便函数中调用
 
@@ -128,7 +128,7 @@ jsx 中可以使用ref 赋值，方便函数中调用
 console.log(this.ul.querySelectorAll('li').length)
 ```
 
-## setState 异步执行的回调函数
+#### setState 异步执行的回调函数
 
 this.setState 是一个异步方法。可以传入一个回调函数
 
@@ -140,7 +140,7 @@ this.setState({
 })
 ```
 
-## 生命周期
+#### 生命周期
 
 组件挂载周期 Mounting
 ```javascript
@@ -189,7 +189,7 @@ componentWillUnmount(){}
 
 [组件的生命周期](https://zh-hans.reactjs.org/docs/react-component.html#the-component-lifecycle)
 
-## Axios
+#### Axios
 ```javascript
 npm install -save axios
 ```
@@ -203,4 +203,51 @@ componentDidMount(){
         .then((res)=>{console.log('axios 获取数据成功:'+JSON.stringify(res))  })
         .catch((error)=>{console.log('axios 获取数据失败'+error)})
 }
+```
+#### react动画 react-transition-group
+
+```
+npm install react-transition-group --save
+```
+
+```
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+```
+
+jsx
+```
+<TransitionGroup>
+    {
+        this.state.todoList.map((item, index) => {
+            return (
+                <CSSTransition
+                    timeout={200}
+                    unmountOnExit
+                    appear={true}
+                    key={index + item}
+                    classNames="todo-item"
+                >
+                    <TodoItem
+                        key={item + index}
+                        item={item}
+                        index={index}
+                        del={this.delItem.bind(this)}
+                    />
+
+                </CSSTransition>
+
+            )
+        })
+    }
+</TransitionGroup>
+```
+
+CSS
+```CSS
+xxx-enter: 进入（入场）前的CSS样式；
+xxx-enter-active:进入动画直到完成时之前的CSS样式;
+xxx-enter-done:进入完成时的CSS样式;
+xxx-exit:退出（出场）前的CSS样式;
+xxx-exit-active:退出动画知道完成时之前的的CSS样式。
+xxx-exit-done:退出完成时的CSS样式。
 ```

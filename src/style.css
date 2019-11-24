@@ -4,3 +4,32 @@
     border: 2px solid rgb(8, 136, 255);
     margin-right: 10px;
 }
+
+.todo-item-enter{
+    opacity: 0;
+    transform: translateX(100px);
+}
+.todo-item-enter-active{
+    opacity: 0;
+    transform: translateX(100px);
+    transition:  all .2s;
+}
+.todo-item-enter-done{
+    opacity: 1;
+    transition:  all .2s;
+    transform: translateX(0px);
+}
+.todo-item-exit{
+    opacity: 1;
+    transform: translateX(0);
+}
+.todo-item-exit-active{
+    opacity: 0;
+    transition:  all .2s;
+    transform: translateX(100px);
+
+}
+.todo-item-exit-done{
+    opacity: 0;
+    transform: translateX(100px);
+}

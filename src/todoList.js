@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import TodoItem from './TodoItem'
 import axios from 'axios'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './style.css'
 
 class Todo extends React.Component {
@@ -22,7 +23,7 @@ class Todo extends React.Component {
                 console.log('axios 获取数据成功:', res.data.listdata)
                 this.setState({
 
-                    todoList : res.data.listdata
+                    todoList: res.data.listdata
                 }
                 )
             })
@@ -36,18 +37,30 @@ class Todo extends React.Component {
                 <input className="input" id="todoinput" value={this.state.inputValue} onChange={this.changeSubButton.bind(this)} />
                 <button onClick={this.addList.bind(this)}>添加待办</button>
                 <ul ref={ul => { this.ul = ul }}>
-                    {
-                        this.state.todoList.map((item, index) => {
-                            return (
-                                <TodoItem
-                                    key={item + index}
-                                    item={item}
-                                    index={index}
-                                    del={this.delItem.bind(this)}
-                                />
-                            )
-                        })
-                    }
+                    <TransitionGroup>
+                        {
+                            this.state.todoList.map((item, index) => {
+                                return (
+                                    <CSSTransition
+                                        timeout={200}
+                                        unmountOnExit
+                                        appear={true}
+                                        key={index + item}
+                                        classNames="todo-item"
+                                    >
+                                        <TodoItem
+                                            key={item + index}
+                                            item={item}
+                                            index={index}
+                                            del={this.delItem.bind(this)}
+                                        />
+
+                                    </CSSTransition>
+
+                                )
+                            })
+                        }
+                    </TransitionGroup>
                 </ul>
             </Fragment>
         )
